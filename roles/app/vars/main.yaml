@@ -1,3 +1,3 @@
-MYSQL_HOST: mysql.aws82s.online
+MYSQL_HOST: "mysql-{{ ENV }}.aws82s.online"
 PATH: /app
 COMPOUNENT: backend

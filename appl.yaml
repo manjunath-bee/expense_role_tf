@@ -1,5 +1,5 @@
-- name: install mysql
-  hosts: backend
+- name: install backend
+  hosts: all
   become: yes
   roles:
    - app
