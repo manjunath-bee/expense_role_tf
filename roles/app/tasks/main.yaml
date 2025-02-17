@@ -66,8 +66,8 @@
   community.mysql.mysql_db:
     state: import
     login_host: "{{ MYSQL_HOST }}"
-    login_user: root
-    login_password: ExpenseApp@1
+    login_user: user
+    login_password: Sudheer$143
     name: all
     target: /app/schema/backend.sql
 
