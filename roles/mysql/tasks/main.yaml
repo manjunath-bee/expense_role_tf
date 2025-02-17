@@ -1,0 +1,26 @@
+- name : install complete mysql
+  ansible.builtin.package:
+     name : mysql-server
+     state: present
+
+- name: Start service mysqld, if not started
+  ansible.builtin.service:
+     name: mysqld
+     state: started
+
+- name: Install bottle for Python 3.3 specifically, using the 'pip3.3' executable
+  ansible.builtin.pip:
+     name: PyMySQL
+     executable: pip3.9
+      
+- name: Get MySQL version with non-default credentials
+  community.mysql.mysql_info:
+     login_user: root
+     login_password: "{{PASSWORD_MYSQL}}"
+     login_host: mysql.aws82s.online
+  register: result
+  ignore_errors: true
+
+- name: excute command
+  ansible.builtin.command: mysql_secure_installation --set-root-pass ExpenseApp@1 
+  when: result.failed == true
